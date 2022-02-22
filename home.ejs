@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title %>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script src="https://kit.fontawesome.com/e7f0e009a9.js" crossorigin="anonymous"></script>
+    </head>
+        <body>
+            <div class="outer-box">
+                <div id="page-heading">
+                    <h1>
+                        <i class="fas fa-list-alt"></i>
+                        TODO App
+                    </h1>
+    
+                </div>
+    
+                
+    
+    
+                <div id="list-form">
+                    <form action="/create-todolist" method="post" >
+                    
+                        <div id="descr">
+                            <p id="descrtext">DESCRIPTION</p>
+                            <textarea  name="desc"  id="descrin" cols="225" placeholder="What do you need to do ?"  type ="text"></textarea>
+                        </div>
+                        
+                        <div id="cate_date">
+                            <select name="category" id=""  >
+                                <option value="none" > Choose a Category</option>
+                                <option value="personal"> personal </option>
+                                <option value="work">work</option>
+                                <option value="school">school</option>
+                                <option value="others">others</option>
+                            </select>
+                            
+                            <input type="date" name="date" placeholder="choose starting date"  >
+                        </div>
+                        
+                        <div id="submitbtn">
+                            <button type="submit" id="addtask"><i class="fas fa-plus"></i> ADD TASK</button>       
+                            <button type="submit" formaction="/deletetask"   id="deletetask"> <i class="fas fa-trash-alt"></i> DELETE TASK </button>
+                        </div>
+
+                        <div id="naph">
+                            <ul class="horizontal-list">
+                                <% for (let i of todo_list) { %> 
+                                    <li class="todo">
+                                        
+                                            <div id="check-delete">
+                                                <input type="checkbox"  name="checkbox" value="<%= i._id %>"/>
+                                           
+                                           <i class="fas fa-trash-alt"></i>
+                                            </div>
+                                            
+                                        
+                                        <div class="details">
+                                            <p><%= i.desc %></p>
+                                            <p><%= i.date %></p>
+                                            <p><%= i.category %></p>
+                                        </div>
+                                    </li>
+            
+                                <% } %>
+                                 
+                            </ul>
+                        </div>
+        
+                    </form>
+                    
+                    
+                </div>
+                
+            </div>
+
+
+                <script type ="text/javascript"src="/js/home.js"></script>
+        </body>
+    
+</html>
